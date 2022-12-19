@@ -1,0 +1,354 @@
+<html lang="vi" __fvdsurfcanyoninserted="1" class="
+        clickberry-extension
+        clickberry-extension-standalone
+        clickberry-extension
+        clickberry-extension-standalone
+        clickberry-extension
+        clickberry-extension-standalone
+    ">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" type="image/png" href="./birthdayCake.png" />
+    <title>Happy Birthday</title>
+    <link id="link" rel="stylesheet" href="./intro.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="shortcut icon" href="./icon.png" type="image/x-icon">
+    <!-- <link rel="stylesheet" href="main.css"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+     
+    <script>
+        window.open = function () { };
+        window.print = function () { };
+        // Support hover state for mobile.
+        if (false) {
+            window.ontouchstart = function () { };
+        }
+    </script>
+    <script type="text/javascript" src="chrome-extension://bfbmjmiodbnnpllbbbfblcplfjjepjdn/js/injected.js"></script>
+    <meta content="clickberry-extension-here" />
+</head>
+
+<body id="body">
+    <div id="countdown" class="content" style="display: none;" >
+        <div id="container" class="container">
+        <div class="counter">
+          <span id="digit" class="digit">3</span>
+        </div>
+      </div>
+    </div>
+    <div id="intro">
+
+        <button id="next1" style="width:300px" class="btn-next">Quà sinh nhật e nè , hihi !!!</button>
+    </div>
+    <link href="https://fonts.googleapis.com/css?family=Wendy+One" rel="stylesheet" type="text/css" />
+    <div id="content" style="display: none;" class="pyro">
+        <div class="before">
+
+        </div>
+        <div class="after">
+
+        </div>
+        <div class="container">
+            <!-- 2. Dòng chữ Happy Birthday
+                Nếu bạn muốn thêm chữ vào thì phải thay đổi css tương ứng cho nó -->
+            <div class="balloon">
+                <div><span>H</span></div>
+                <div><span>A</span></div>
+                <div><span>P</span></div>
+                <div><span>P</span></div>
+                <div><span>Y</span></div>
+                <div><span>B</span></div>
+                <div><span>I</span></div>
+                <div><span>R</span></div>
+                <div><span>T</span></div>
+                <div><span>H</span></div>
+                <div><span>D</span></div>
+                <div><span>A</span></div>
+                <div><span>Y</span></div>
+            </div>
+            <div class="avatar">
+                <!-- 3. Avatar của người bạn muốn gởi lời chúc -->
+                <img src="./KimCuong.jpg" alt="" class="avatar__img" />
+                <!-- 4. Tên của người đó -->
+                <h1 class="avatar__title">Kim Cương </h1>
+                <button id="next" onclick="showMessage()" class="btn-next">Còn nữa nè xem hông</button>
+            </div>
+
+            <!-- 5. Phần nhạc -->
+            <audio id="player" autoplay loop>
+                <source src="./music.mp3" type="audio/mp3">
+            </audio>
+        </div>
+    </div>
+    <div id="drag-container" style="display: none;">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            html,
+            body {
+                height: 100%;
+                /* for touch screen */
+                touch-action: none;
+            }
+
+            body {
+                overflow: hidden;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                /* background: #111; */
+                -webkit-perspective: 1000px;
+                perspective: 1000px;
+                -webkit-transform-style: preserve-3d;
+                transform-style: preserve-3d;
+            }
+
+            #drag-container,
+            #spin-container {
+                position: relative;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                margin: auto;
+                -webkit-transform-style: preserve-3d;
+                transform-style: preserve-3d;
+                -webkit-transform: rotateX(-10deg);
+                transform: rotateX(-10deg);
+                z-index: 100;
+            }
+
+            #drag-container img,
+            #drag-container video {
+                -webkit-transform-style: preserve-3d;
+                transform-style: preserve-3d;
+                position: absolute;
+                left: 0;
+                top: 0;
+                min-height: 200px;
+                max-width: 120%;
+                max-height: 120%;
+                line-height: 200px;
+                font-size: 50px;
+                text-align: center;
+                -webkit-box-shadow: 0 0 8px #fff;
+                box-shadow: 0 0 8px #fff;
+                -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0005);
+            }
+
+            #drag-container img:hover,
+            #drag-container video:hover {
+                -webkit-box-shadow: 0 0 15px #fffd;
+                box-shadow: 0 0 15px #fffd;
+                -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0007);
+            }
+
+            #drag-container p {
+
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                -webkit-transform: translate(-50%, -50%) rotateX(90deg);
+                transform: translate(-50%, -50%) rotateX(90deg);
+                color: rgb(0, 195, 255);
+                animation: fadein ease 15s;
+            }
+
+            @keyframes fadein {
+                from {
+                    opacity: 0;
+
+                }
+
+                to {
+                    opacity: 1;
+
+                }
+            }
+
+            #ground {
+                width: 900px;
+                height: 900px;
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                -webkit-transform: translate(-50%, -50%) rotateX(90deg);
+                transform: translate(-50%, -50%) rotateX(90deg);
+                background: -webkit-radial-gradient(center center, farthest-side, #9993, transparent);
+            }
+
+            #music-container {
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: none;
+            }
+
+            @-webkit-keyframes spin {
+                from {
+                    -webkit-transform: rotateY(0deg);
+                    transform: rotateY(0deg);
+                }
+
+                to {
+                    -webkit-transform: rotateY(360deg);
+                    transform: rotateY(360deg);
+                }
+            }
+
+            @keyframes spin {
+                from {
+                    -webkit-transform: rotateY(0deg);
+                    transform: rotateY(0deg);
+                }
+
+                to {
+                    -webkit-transform: rotateY(360deg);
+                    transform: rotateY(360deg);
+                }
+            }
+
+            @-webkit-keyframes spinRevert {
+                from {
+                    -webkit-transform: rotateY(360deg);
+                    transform: rotateY(360deg);
+                }
+
+                to {
+                    -webkit-transform: rotateY(0deg);
+                    transform: rotateY(0deg);
+                }
+            }
+
+            @keyframes spinRevert {
+                from {
+                    -webkit-transform: rotateY(360deg);
+                    transform: rotateY(360deg);
+                }
+
+                to {
+                    -webkit-transform: rotateY(0deg);
+                    transform: rotateY(0deg);
+                }
+            }
+
+            #canvas {
+                background-color: transparent;
+                color: transparent;
+                margin: 0;
+                overflow: hidden;
+                background-repeat: no-repeat;
+                width: 100vw;
+            }
+
+
+            #canva {
+                position: absolute;
+                top: 0px;
+                right: 0px;
+                overflow: hidden;
+            }
+
+            p {
+                font-family: 'Dancing Script', cursive;
+                font-family: 'Rampart One', cursive;
+                font-size: 4vw;
+
+            }
+        </style>
+        <div id="spin-container">
+            <img src="./img/img1.jpg" alt="">
+            <img src="./img/img2.jpg" alt="">
+            <img src="./img/img3.jpg" alt="">
+            <img src="./img/img4.jpg" alt="">
+            <img src="./img/img5.jpg" alt="">
+            <img src="./img/img6.jpg" alt="">
+            <img src="./img/img7.jpg" alt="">
+            <img src="./img/cont1.png" alt="">
+
+            <p>My Love</p>
+
+
+        </div>
+        <div id="ground"></div>
+    </div>
+    <div style="display: none;" id="music-container"></div>
+    <div style="display: none;" id="canva">
+        <canvas id="canvas"></canvas>
+    </div>
+    <audio id="nhacnen" src="./nhacnen.mp3" autoplay loop></audio>
+    <script>
+        if (document.location.search.match(/type=embed/gi)) {
+            window.parent.postMessage("resize", "*");
+        }
+        var content = document.getElementById("content")
+        var intro = document.getElementById("intro")
+        var countdown= document.getElementById("countdown")
+        intro.addEventListener('click', () => {
+
+            var script = document.createElement('script');
+                    script.type = "text/javascript";
+                    script.src = "./intro.js";
+            
+            document.head.appendChild(script);
+       
+            document.head.appendChild(link);
+            countdown.style.display="block"
+            // content.style.display = "block"
+            intro.style.display = "none"
+           
+            // let player = document.getElementById('player');
+            // player.play();
+
+        })
+
+
+
+        function showMessage() {
+            // 6. Lời nhắn hiện ra khi bấm vào tên hoặc avatar
+            swal({
+                title: "Gởi em", // Tiêu đề của popup
+                text: "Cảm ơn em! Người mang cho anh niềm vui trong cuộc sống và hứng khởi trong công việc. Sinh nhật em Anh chúc em luôn xinh tươi, yêu đời, thành công trong cuộc sống. Yêu em dấu bé ba ❤️️!", // Nội dung lời nhắn
+                button: {
+                    text: "Còn nữa nè :))",
+                    showCancelButton: false,
+                    confirmButtonColor: '#3085d6',
+
+                    // confirmButtonText: ''
+                },
+
+            }).then((result) => {
+                if (!result.isConfirmed) {
+                    var dragcontainer = document.getElementById("drag-container")
+                    content.style.display = "none"
+                    player.pause()
+                    var nhacnen=document.getElementById("nhacnen")
+                    nhacnen.play()
+                    var script = document.createElement('script');
+                    script.type = "text/javascript";
+                    script.src = "main.js";
+
+                    document.head.appendChild(script);
+                    dragcontainer.style.display = "block"
+                    var body = document.getElementById('body')
+                    body.style.background = "black"
+                    var canva = document.getElementById("canva")
+                    canva.style.display = "block"
+                   
+
+                }
+
+            });
+        }
+    </script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+    <!-- <script src="main.js"></script> -->
+</body>
+
+</html>
